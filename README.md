@@ -20,4 +20,10 @@ Implement a search feature to allow users to search for specific student by thei
 <b>User Interface:</b>
 Design a simple and intuitive user interface using HTML, CSS, and Bootstrap . Focus on usability and responsiveness to ensure the application looks good.
 
+<h2>Project Images</h2>
+
+<img src="static/images/1.png" ><br>
+<img src="static/images/2.png" ><br>
+<img src="static/images/3.png" ><br>
+
 By working on this project, you will gain hands-on experience with Django fundamentals such as models, views, templates, forms, authentication, and database interactions. 
