@@ -29,7 +29,9 @@
                 <th style="padding: 8px; border: 1px solid #ddd;">Mobile</th>
                 <th style="padding: 8px; border: 1px solid #ddd;">Email</th>
                 <th style="padding: 8px; border: 1px solid #ddd;">Address</th>
+                {% if request.user.is_authenticated %}
                 <th style="padding: 8px; border: 1px solid #ddd;">Action</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -42,10 +44,12 @@
                 <td style="padding: 8px; border: 1px solid #ddd;">{{student.mobile}}</td>
                 <td style="padding: 8px; border: 1px solid #ddd;">{{student.email}}</td>
                 <td style="padding: 8px; border: 1px solid #ddd;">{{student.address}}</td>
+                {% if request.user.is_authenticated %}
                 <td style="padding: 8px; border: 1px solid #ddd;">
                     <a href="{% url 'updateStudent' student.id %}" style="padding: 5px 10px;background-color:darkgreen;cursor: pointer;text-decoration: none;color:#ddd">Update</a>
                     <a href="{% url 'delete' student.id %}" style="padding: 5px 10px;background-color:crimson;cursor: pointer;text-decoration: none;color:#ddd">Delete</a>
                 </td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
