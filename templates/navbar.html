@@ -1,0 +1,22 @@
+<nav style="background-color: #007bff; color: #fff;font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
+        <a href="{% url 'main' %}" style="text-decoration: none;"><h1 style="margin: 0; font-size: 24px;">Admin Panel</h1></a>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex;">
+            <li style="margin-left: 20px;"><a href="{% url 'home' %}" style="color: #fff; text-decoration: none; font-size: 18px;">Home</a></li>
+            {% if request.user.is_authenticated %}
+            <li style="margin-left: 20px;"><a href="{% url 'addStudent' %}" style="color: #fff; text-decoration: none; font-size: 18px;">Add Student</a></li>
+            <li style="margin-left: 20px;"><a href="{% url 'logout' %}" style="color: #fff; text-decoration: none; font-size: 18px;">Logout</a></li>
+            {% else %}
+            <li style="margin-left: 20px;"><a href="{% url 'login' %}" style="color: #fff; text-decoration: none; font-size: 18px;">login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}

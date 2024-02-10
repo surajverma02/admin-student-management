@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Administration Panel</title>
+</head>
+<body style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 14px;">
+    {% include 'navbar.html' %}
+    <div class="container">
+        <h1>Welcome to the Administration Panel</h1>
+    </div>
+
+    <form method="GET" style="text-align: center;">
+        <input type="text" name="search" placeholder="Search..." style="font-weight:bold;padding: 10px; width: 300px; border: 1px solid #ccc; border-radius: 5px;">
+        <input type="submit" value="Search" style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+    </form>
+    <br><br>
+
+    <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 8px; border: 1px solid #ddd;">ID</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Name</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">DOB</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Course</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Mobile</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Email</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Address</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{student.id}}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{student.name}}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{student.dob}}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{student.course}}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{student.mobile}}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{student.email}}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{student.address}}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">
+                    <a href="{% url 'updateStudent' student.id %}" style="padding: 5px 10px;background-color:darkgreen;cursor: pointer;text-decoration: none;color:#ddd">Update</a>
+                    <a href="{% url 'delete' student.id %}" style="padding: 5px 10px;background-color:crimson;cursor: pointer;text-decoration: none;color:#ddd">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>
